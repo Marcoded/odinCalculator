@@ -1,0 +1,86 @@
+*{
+    font-family: 'DynaPuff', cursive;
+}
+
+
+
+
+
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    height: 600px;
+    width: 500px;
+    
+    justify-items: center;
+    border: red solid 3px;
+    grid-auto-flow: row dense;
+    grid-template-areas:
+      "Display Display Display Display"
+      "allClear clear percent divided"
+      "seven eight nine plus"
+      "four five six minus"
+      "one two three multiply"
+      "zero dot equals equals";
+  }
+
+  .buttons{
+    background-color: rgb(194, 194, 194);
+    border: 1px solid green;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-whole-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Display { grid-area: Display; }
+  
+  .equals { grid-area: equals; }
+  
+  .allClear { grid-area: allClear; }
+  
+  .clear { grid-area: clear; }
+  
+  .percent { grid-area: percent; }
+  
+  .divided { grid-area: divided; }
+  
+  .seven { grid-area: seven; }
+  
+  .four { grid-area: four; }
+  
+  .one { grid-area: one; }
+  
+  .zero { grid-area: zero; }
+  
+  .dot { grid-area: dot; }
+  
+  .two { grid-area: two; }
+  
+  .five { grid-area: five; }
+  
+  .eight { grid-area: eight; }
+  
+  .nine { grid-area: nine; }
+  
+  .plus { grid-area: plus; }
+  
+  .six { grid-area: six; }
+  
+  .three { grid-area: three; }
+  
+  .minus { grid-area: minus; }
+  
+  .multiply { grid-area: multiply; }
+  
