@@ -5,35 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js" defer></script>
+<script src="final.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="symbolDiv"></div>
     <div class="center-whole-page">
         <div class="container">
-            <div class="Display buttons">Display</div>
-            <div class="equals buttons">=</div>
-            <div class="allClear buttons">AC</div>
-            <div class="clear buttons">C</div>
-            <div class="percent buttons">%</div>
-            <div class="divided buttons">/</div>
-            <div class="seven buttons">7</div>
-            <div class="four buttons">4</div>
-            <div class="one buttons">1</div>
-            <div class="zero buttons">0</div>
-            <div class="dot buttons">.</div>
-            <div class="two buttons">2</div>
-            <div class="five buttons">5</div>
-            <div class="eight buttons">8</div>
-            <div class="nine buttons">9</div>
-            <div class="plus buttons">+</div>
-            <div class="six buttons">6</div>
-            <div class="three buttons">3</div>
-            <div class="minus buttons">-</div>
-            <div class="multiply buttons">X</div>
+            <div id="Display" class="buttons"></div>
+            <!-- <div id="equals" class="buttons equals" data-symbol="=">=</div> -->
+            <div id="equals" class="buttons operation" data-symbol="=">=</div> <!-- let's treat the equal same as any other button -->
+            <div id="allClear" class="buttons AC">AC</div>
+            <div id="clear" class="buttons C">C</div>
+            <div id="percent" class="buttons operation" data-operation="percent">%</div>
+            <div id="divided" class="buttons operation" data-operation=3 data-symbol="÷">/</div>
+            <div id="seven" class="buttons number" data-nombre="7">7</div>
+            <div id="four" class="buttons number" data-nombre="4">4</div>
+            <div id="one" class="buttons number" data-nombre="1">1</div>
+            <div id="zero" class="buttons number" data-nombre="0">0</div>
+            <div id="dot" class="buttons number" data-nombre=".">.</div>
+            <div id="two" class="buttons number" data-nombre="2">2</div>
+            <div id="five" class="buttons number" data-nombre="5">5</div>
+            <div id="eight" class="buttons number" data-nombre="8">8</div>
+            <div id="nine" class="buttons number" data-nombre="9">9</div>
+            <div id="plus" class="buttons operation" data-operation=1 data-symbol="+" >+</div>
+            <div id="six" class="buttons number" data-nombre="6">6</div>
+            <div id="three" class="buttons number" data-nombre="3">3</div>
+            <div id="minus" class="buttons operation" data-operation=2 data-symbol="-">-</div>
+            <div id="multiply" class="buttons operation" data-operation=4 data-symbol="X">X</div>
         </div>
     </div>
 </body>
