@@ -1,3 +1,7 @@
+// pour régler les pb de - - = +, tu n'affiche pas les opérateur sur l'écran
+
+
+
 // a chaque fois que je click sur un opérator
 
 // vérification si les curent and past value are populated 
@@ -14,10 +18,12 @@
 // attention à ne pas sauver l'opérateur précédent aussi quand tu prend la display value
 //
 
-
+// -
 
 // left to handle
-// => divide by zero
+// Round number
+// highlight selection of operator
+// handle negative operator first
 
 
 EqualNode = document.getElementById("equals")
@@ -26,6 +32,7 @@ displayNode = document.getElementById("Display") // works // gets the reference 
 numbersNodeArr = Array.from(document.getElementsByClassName("number"))
 clearNode = document.getElementById("clear") // works // gets the reference of the Display
 symbolDivNode = document.getElementById("symbolDiv")
+allBtnArr = Array.from(document.getElementsByClassName("HL"))
 
 
 let pastValue = undefined
@@ -51,6 +58,7 @@ const multiply = function(a,b) {
 };
 
 const operateIf = (operatorIndex,a,b)=> {
+    console.log(a + '' +b);
     if (operatorIndex === 1) {
         console.log("i've chosen add")
         return    add(a,b)
@@ -78,19 +86,29 @@ const operatorNodesListener = () =>
 {operatorsNodesArr.forEach(button => {
     
     button.addEventListener('click', (e) => {
-        //e.target.style.background = '#3d3d3d' 
+        e.target.style.background = '#3d3d3d' 
 
-        
-
-            if (pastValue!==undefined&&currentValue!==undefined) {  // both value exist // operation start
-                console.log("both value are populated")
-                displayFlusher()
-                calculus()
-                userOperatorIndex=undefined
                 userOperatorIndex =button.dataset.operation  
                 userOperatorIndex = parseInt(userOperatorIndex,10)
-                console.log("assigning an index AFTER the operation");
+                console.log('%c user operator index is ' +userOperatorIndex, 'background: #222; color: #bada55')
 
+// Start calculus 
+
+            if (pastValue!==undefined && currentValue!==undefined &&userOperatorIndex!==undefined) {  // both value exist // operation start
+                console.log("both value are populated")
+                displayFlusher()
+                
+                console.log('%c Operation has started ', 'background: #222; color: #bada55')
+                calculus()
+                userOperatorIndex=undefined
+                
+                userOperatorIndex =button.dataset.operation  
+                userOperatorIndex = parseInt(userOperatorIndex,10)
+                
+                
+                
+
+    // nested if for handling infitity
 
                     if(result===Infinity) {
                         displayNode.append("/0 ERROR")
@@ -101,16 +119,19 @@ const operatorNodesListener = () =>
                 //result=undefined
                     //console.log("result is now undefined")   
                         }
-
+// keep populating display
             } else if(pastValue===undefined){            // past value does not exist           
                 console.log("both value are not populated, past value has been copied")
+                
+                
                 pastValue=currentValue
                 currentValue=undefined
                 console.log("pas value is" +pastValue)
                 userOperatorIndex =button.dataset.operation 
-                userOperatorIndex = parseInt(userOperatorIndex,10)
-                console.log("assignign an index");
-                displayFlusher()
+                userOperatorIndex = parseInt(userOperatorIndex,10) 
+                displayFlusher() 
+                symbolDivNode.append(button.dataset.symbol)
+                
             }
      
   })
@@ -129,8 +150,11 @@ const numberNodesListener = () => {
     numbersNodeArr.forEach(numberButton => {
         
         numberButton.addEventListener('click', (e) => {
+            // flush the display when the first number of the secong pair is entered :( if(userOperatorIndex!==undefined){displayFlusher()}
+            // solution don't append the opeator to the display
             resultStateHandler()
           //  e.target.style.background = 'blue' // tester
+          
             displayNode.append(numberButton.dataset.nombre) // append the nombre
             
             currentValue=Number(displayNode.innerText) // problem ici
@@ -144,6 +168,7 @@ const numberNodesListener = () => {
     numberNodesListener()
 
     const displayFlusher =() => {
+        console.log('%c flushing the display ', 'background: #222; color: #bada55')
         displayNode.innerText=""
     }
 
@@ -177,6 +202,54 @@ const numberNodesListener = () => {
         })
 
 
-        const savedOperator = () => {
+       
+        EqualNode.addEventListener('click', (e) => {
+        
+            userOperatorIndex = parseInt(userOperatorIndex,10) 
+            calculus()
+            displayFlusher()
+            console.log('%c Operation has started with the equal sign ', 'background: #222; color: #bada55')
+            displayNode.append(result) 
+            pastValue = result
+            currentValue=undefined
+            
+            console.log("past value is now result")  
+
+            
+            
+            })
+
+      
+
+        const symbolHighlight = () => {
+            if (operatorIndex === 1) {
+                console.log("i've chosen add")
+                return    add(a,b)
+            } else if (operatorIndex === 2) {
+                console.log("i've chosen sub")
+                return  subtract(a,b)
+            } else if (operatorIndex===3) {
+                console.log("i've chosen divide")
+                return  divide(a,b)
+                
+            } else if (operatorIndex===4) {
+                console.log("i've chosen multiply")
+                return  multiply(a,b)
+            } else {
+                console.log("unknow operator or operator number given")
+            }
 
         }
+
+        const buttonHover = () => {  
+            allBtnArr.forEach(button => {
+                
+                button.addEventListener('mouseover', (e) => {
+                    e.target.classList.add("highlight");})
+                    button.addEventListener('mouseout', (e) => {
+                        e.target.classList.remove("highlight");})
+                })
+            }
+            buttonHover()
+
+            

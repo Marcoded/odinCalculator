@@ -1,8 +1,17 @@
+
+/* background blue #9DD0D6  */
+/* calcBG purple #C4F5CD */
+/* calc btn yellow #EBD078*/
+/* highlight color #EBdo07 */
+
+
 *{
     font-family: 'Quicksand', sans-serif;
 }
 
-
+body {
+  background-color:#9DD0D6 ;
+}
 
 
 
@@ -16,7 +25,8 @@
     width: 500px;
     
     justify-items: center;
-    border: red solid 3px;
+    border:#3d3d3d solid 20px;
+    border-radius: 2%;
     grid-auto-flow: row dense;
     grid-template-areas:
       "Display Display Display Display"
@@ -29,13 +39,16 @@
 
   .buttons{
     background-color: rgb(194, 194, 194);
-    border: 1px solid green;
-    border-radius: 20px;
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .notDisplay {
+    background-color: #EBD078;
+    border: 1px solid #C4A3D6;
   }
 
   .center-whole-page{
@@ -44,8 +57,15 @@
     align-items: center;
   }
 
+.highlight {
+  background-color: #C4A3D6;
+}
 
 
+
+#Display{
+  font-size: 3em;
+}
 
 #Display { grid-area: Display;
             justify-items: right; }
